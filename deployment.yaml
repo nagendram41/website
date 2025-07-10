@@ -1,23 +1,22 @@
 ---
-apiVersion: apps/v1       # Use stable API version
+apiVersion: apps/v1                    # Use the stable API version
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx-deployment               # Unique name for the deployment
   labels:
-    app: nginx           # Label for selector and Service binding
+    app: nginx                         # Used by selector and service
 spec:
-  replicas: 2
+  replicas: 2                          # Number of pod replicas
   selector:
     matchLabels:
-      app: nginx
+      app: nginx                       # Must match pod template labels
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx                     # Ensure pods are selectable
     spec:
       containers:
         - name: nginx
-          image: nag307/project2:latest
-          # Expose port 80
+          image: nag307/project2:latest  # Container image to deploy
           ports:
-           - containerPort: 80
+            - containerPort: 80       # Expose port 80 for traffic

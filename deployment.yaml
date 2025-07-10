@@ -1,9 +1,9 @@
-apiVersion: apps/v1
+apiVersion: apps/v1       # Use stable API version
 kind: Deployment
 metadata:
   name: nginx-deployment
   labels:
-    app: nginx
+    app: nginx           # Label for selector and Service binding
 spec:
   replicas: 2
   selector:
@@ -15,7 +15,18 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nag307/project2:latest
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: nag307/project2:latest
+          # Expose port 80
+          ports:
+            - containerPort: 80
+          # Optional: set resource requests and limits
+          # resources:
+          #   requests:
+          #     cpu: "100m"
+          #     memory: "128Mi"
+          #   limits:
+          #     cpu: "250m"
+          #     memory: "256Mi"
+          # Optional: ensure Kubernetes re-pulls image as needed
+          # imagePullPolicy: IfNotPresent

@@ -20,5 +20,4 @@ spec:
           image: nag307/project2:latest
           # Expose port 80
           ports:
-          - containerPort: 80
-          
+           - containerPort: 80
